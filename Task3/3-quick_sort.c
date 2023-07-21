@@ -43,21 +43,21 @@ void quicksort_recursion(int *array, int first, int last, size_t size)
 int partition(int *array, int first, int last, size_t size)
 {
 	int pivot_value = array[last];
-	int i = first - 1;
+	int i = first;
 	int j;
 
-	for (j = first; j <= last; j++)
+	for (j = first; j < last; j++)
 	{
 		if (array[j] < pivot_value)
 		{
-			i++;
 			swap(&array[i], &array[j]);
 			print_array(array, size);
+			i++;
 		}
 	}
-	swap(&array[i + 1], &array[last]);
+	swap(&array[i], &array[last]);
 
-	return (i + 1);
+	return (i);
 }
 /**
  * swap - to swap between two elements
