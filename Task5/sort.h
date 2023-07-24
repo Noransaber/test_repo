@@ -16,9 +16,9 @@
  */
 typedef struct listint_s
 {
-        const int n;
-        struct listint_s *prev;
-        struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 
 /**FUNCTION PROTOTYPES*/
@@ -37,11 +37,5 @@ void swap_sh(int *arr, int x, int y, int *swapped);
 void merge(size_t l, size_t m, size_t r, int *dest, int *org);
 void merge_recrusion(size_t l, size_t r, int *a, int *cpy_arr);
 void merge_sort(int *array, size_t size);
-void counting_sort(int *array, size_t size);
-size_t partition_h(int *a, size_t first, size_t last, size_t size);
-void quicksort_recursion_h(int *array, int first, int last, size_t size);
-void quick_sort_hoare(int *array, size_t size);
-listint_t *create_listint(const int *array, size_t size);
-void cocktail_sort_list(listint_t **list);
-void move_left(listint_t *sec, listint_t *first, listint_t **h);
+
 #endif
