@@ -44,7 +44,6 @@ size_t partition_h(int *a, size_t first, size_t last, size_t size)
 {
 
 	int pivot, swap;
-    (void) size;
 
 	pivot = a[last];
 
@@ -62,7 +61,7 @@ size_t partition_h(int *a, size_t first, size_t last, size_t size)
 				swap = a[first];
 				a[first] = a[last];
 				a[last] = swap;
-				print_array(a, last + 1);
+				print_array(a, size);
 			}
 			first++;
 			last--;

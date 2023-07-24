@@ -38,7 +38,5 @@ void merge(size_t l, size_t m, size_t r, int *dest, int *org);
 void merge_recrusion(size_t l, size_t r, int *a, int *cpy_arr);
 void merge_sort(int *array, size_t size);
 void counting_sort(int *array, size_t size);
-size_t partition_h(int *a, size_t first, size_t last, size_t size);
-void quicksort_recursion_h(int *array, int first, int last, size_t size);
-void quick_sort_hoare(int *array, size_t size);
+
 #endif
