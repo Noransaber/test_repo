@@ -1,65 +1,74 @@
 #include "sort.h"
 /**
- * get_max - fin max number
- * @a: array where we search about max num
- * @s: lenth of the array
- * Return: max number
- **/
-
-
-int get_max(const int *a, size_t s)
+* pow_10 - calculates a positive power of 10
+* @p: power of 10
+* Return: result
+**/
+unsigned int pow_10(unsigned int p)
 {
-	size_t i;
-	int max;
-
-	max = a[0];
-	for (i = 0; i < s; i++)
-	{
-		if (a[i] > max)
-			max = a[i];
-	}
-	return (max);
+unsigned int n, r;
+r = 1;
+for (n = 0; n < p; n++)
+r *= 10;
+return (r);
 }
 /**
- * radix_sort - sorts an array of integers in ascending
- * @array: Array to be sorted
- * @size: size of the array
- **/
+* cs -  sorts an array of integers in ascending order
+* @a: array to be sorted
+* @s: size
+* @d: digit
+* Return: 1 if we need to keep sorting
+**/
+unsigned int cs(int *a, size_t s, int d)
+{
+int i, count[10] = {0};
+int *cpy = NULL;
+size_t j, temp, total = 0;
+unsigned int d1, d2, sort = 0;
+
+d2 = pow_10(d - 1);
+d1 = d2 * 10;
+cpy = malloc(sizeof(int) * s);
+if (cpy == NULL)
+exit(1);
+for (j = 0; j < s; j++)
+{
+cpy[j] = a[j];
+if (a[j] / d1 != 0)
+sort = 1;
+}
+for (i = 0; i < 10; i++)
+count[i] = 0;
+for (j = 0; j < s; j++)
+count[(a[j] % d1) / d2] += 1;
+for (i = 0; i < 10; i++)
+{
+temp = count[i];
+count[i] = total;
+total += temp;
+}
+for (j = 0; j < s; j++)
+{
+a[count[(cpy[j] % d1) / d2]] = cpy[j];
+count[(cpy[j] % d1) / d2] += 1;
+}
+free(cpy);
+return (sort);
+}
+/**
+* radix_sort - sorts an array of integers in ascending
+* @array: array to be sorted
+* @size: length of the array
+**/
 void radix_sort(int *array, size_t size)
 {
-	size_t i;
-	int j, max;
-	int exp = 1;
-	int *output = malloc(size * sizeof(int));
+unsigned int i, sort = 1;
 
-	if (size < 2)
-		return;
-
-	max = get_max(array, size);
-	if (output == NULL)
-		return;
-	while (max / exp > 0)
-	{
-		int count[10] = {0};
-
-		for (i = 0; i < size; i++)
-			count[(array[i] / exp) % 10]++;
-
-		for (j = 1; j < 10; j++)
-			count[j] += count[j - 1];
-
-		for (j = size - 1; j >= 0; j--)
-		{
-			output[count[(array[j] / exp) % 10] - 1] = array[j];
-			count[(array[j] / exp) % 10]--;
-		}
-
-		for (i = 0; i < size; i++)
-			array[i] = output[i];
-
-		print_array(array, size);
-
-		exp *= 10;
-	}
-	free(output);
+if (array == NULL || size < 2)
+return;
+for (i = 1; sort == 1; i++)
+{
+sort = cs(array, size, i);
+print_array(array, size);
+}
 }
