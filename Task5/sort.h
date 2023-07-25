@@ -37,5 +37,19 @@ void swap_sh(int *arr, int x, int y, int *swapped);
 void merge(size_t l, size_t m, size_t r, int *dest, int *org);
 void merge_recrusion(size_t l, size_t r, int *a, int *cpy_arr);
 void merge_sort(int *array, size_t size);
+void counting_sort(int *array, size_t size);
+size_t partition_h(int *a, size_t first, size_t last, size_t size);
+void quicksort_recursion_h(int *array, int first, int last, size_t size);
+void quick_sort_hoare(int *array, size_t size);
+void heap_sort(int *array, size_t size);
+void sortify(int *array, int heap, int i, int size);
+listint_t *create_listint(const int *array, size_t size);
+void cocktail_sort_list(listint_t **list);
+void move_left(listint_t *sec, listint_t *first, listint_t **h);
+void bitonic_sort(int *array, size_t size);
+unsigned int pow_10(unsigned int p);
+unsigned int count_sort(int *a, size_t s, unsigned int d);
+void radix_sort(int *array, size_t size);
+int get_max(const int *a, size_t s);
 
 #endif

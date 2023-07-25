@@ -47,5 +47,9 @@ listint_t *create_listint(const int *array, size_t size);
 void cocktail_sort_list(listint_t **list);
 void move_left(listint_t *sec, listint_t *first, listint_t **h);
 void bitonic_sort(int *array, size_t size);
+unsigned int pow_10(unsigned int p);
+unsigned int count_sort(int *a, size_t s, unsigned int d);
+void radix_sort(int *array, size_t size);
+int get_max(const int *a, size_t s);
 
 #endif
